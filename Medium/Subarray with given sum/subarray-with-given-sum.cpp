@@ -12,22 +12,23 @@ class Solution
     {
         // Your code here
         int left=0,right=0;
-        long long sum=0;
+        long long sum=arr[0];
         while(right<n){
-            sum=sum+arr[right];
-            while(left<right && sum > s)
-            {
+           
+            while(left<right && sum>s){
                 sum-=arr[left];
                 left++;
             }
-            if(sum==s)
-            {
-                return {left+1 ,right+1};
+            if(sum==s){
+                return {left+1 , right+1};
             }
             right++;
-            }
-        return {-1} ; 
+            sum+=arr[right];
+            
+            
         }
+        return {-1};
+    }
 };
 
 //{ Driver Code Starts.
