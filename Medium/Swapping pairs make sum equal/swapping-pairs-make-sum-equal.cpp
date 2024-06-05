@@ -9,25 +9,37 @@ class Solution {
   public:
     int findSwapValues(int a[], int n, int b[], int m) {
         // Your code goes here
+        sort(a,a+n);
         sort(b,b+m);
-        int sum1 = accumulate(a,a+n,0);
-        int sum2 = accumulate(b,b+m,0);
-        int dif = sum1-sum2;
-        if(dif&1) return -1;
-        dif/=2;
-        for(int i=0;i<n;i++){
-            int val = a[i]-dif;
-            if(binary_search(b,b+m,val)) {return 1;}
+        int sum1=0;
+        for(int i=0;i<n;i++)
+        {
+            sum1+=a[i];
         }
-        
-        // map<int,int>mp;
-        // for(int i=0;i<n;i++){
-        //     int val=a[i]-dif;
-        //     mp[val]++;
-        // }
-        // for(auto i:mp){
-        //     if(i.second>=1) return 1;
-        // }
+        int sum2=0;
+        for(int i=0;i<m;i++)
+        {
+            sum2+=b[i];
+        }
+        if(sum1==sum2)
+            return 1;
+        int j=0;
+        int i=0;
+        while(i<n && j<m)
+        {
+            long sumA=sum1-a[i]+b[j];
+            long sumB=sum2-b[j]+a[i];
+            if(sumA==sumB)
+                {
+                    return 1;
+                }
+                else if(sumA>sumB)
+                {
+                    i++;
+                }
+                else
+                    j++;
+        }
         return -1;
     }
 };
