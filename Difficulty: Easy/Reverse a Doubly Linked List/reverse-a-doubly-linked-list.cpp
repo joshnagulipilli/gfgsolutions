@@ -105,20 +105,18 @@ class Solution
     {
         //Your code here
         Node* temp=head;
-        stack<int>st;
+        Node* front;
+        Node* back=NULL;
         while(temp!=NULL)
         {
-            st.push(temp->data);
-            temp=temp->next;
+            front=temp->next;
+            temp->next=back;
+            temp->prev=front;
+            back=temp;
+            temp=front;
         }
-        temp=head;
-        while(temp!=NULL)
-        {
-            temp->data=st.top();
-            st.pop();
-            temp=temp->next;
-        }
-        return head;
+        return back;
+        
     }
 };
 
