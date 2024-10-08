@@ -26,10 +26,9 @@ class Solution {
                 mp[sum]=i;
                 maxi=max(maxi,i+1);
             }
-            int rem=sum-0;
-            if(mp.find(rem)!=mp.end())
+            if(mp.find(sum)!=mp.end())
             {
-                len=i-mp[rem];
+                len=i-mp[sum];
                 maxi=max(len,maxi);
             }
             else if(mp.find(sum)==mp.end())
