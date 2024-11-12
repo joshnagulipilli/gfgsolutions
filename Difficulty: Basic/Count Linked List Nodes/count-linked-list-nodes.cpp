@@ -29,16 +29,13 @@ class Solution {
     int getCount(struct Node* head) {
 
         // Code here
-        int cnt=0;
-        Node* temp=head;
-        if(head==NULL) return 0;
-        if(head->next==NULL) return 1;
-        while(temp!=NULL)
-        {
-            cnt++;
+        int c=0;
+        Node* temp = head;
+        while(temp!=NULL){
             temp=temp->next;
+            c++;
         }
-        return cnt;
+        return c;
     }
 };
 
@@ -66,6 +63,7 @@ int main() {
         }
         Solution ob;
         cout << ob.getCount(head) << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
